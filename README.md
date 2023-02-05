@@ -32,12 +32,10 @@
 
 
 #--- working on the host -----------------------------------------------------------------{{{
+
 #### boot the live environment
 
-    on the asus k50:
-    esc = select boot device <---
-    ------------------------ 
-    F2  = bios setup
+    ESC to select boot device.
 
 
 #### loadkeys
@@ -71,6 +69,7 @@ Use the Alt+arrow shortcut. To edit configuration files, vim are available.
 
 
 #--- working via a ssh client ------------------------------------------------------------{{{
+
 #### ssh
 
     ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@192.168.0.31
@@ -84,7 +83,7 @@ Use the Alt+arrow shortcut. To edit configuration files, vim are available.
     timedatectl status
 
 
-#### partiton the disks
+#### partiton the disks ---------------------------------------------{{{
 
     fdisk -l
     lsblk
@@ -104,7 +103,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 ---
 
-
+####-----------------------------------------------------------------}}}
 
 
 #### fortmat the partitions
