@@ -108,6 +108,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### fortmat the partitions
 
+    lsblk
     mkfs.ext4 /dev/sda6
     mkswap /dev/sda5 
 
