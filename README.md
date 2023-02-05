@@ -132,6 +132,7 @@ sda8    lfs
 
 #### install essential packages
 
+    lscpu to see if you need amd-ucode or intel ucode.    
     pacstrap -K /mnt base linux linux-firmware amd-ucode vim
 
 
