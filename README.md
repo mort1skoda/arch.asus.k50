@@ -1,9 +1,13 @@
-# arch.asus.k50
+## arch.asus.k50
 
+
+
+#--- preparation -------------------------------------------------------------------------{{{
 
 #### download
 
     https://mirror.archlinux.no/iso/2023.02.01/
+
 
 
 #### wget
@@ -12,16 +16,22 @@
     wget https://mirror.archlinux.no/iso/2023.02.02/archlinux-x86_64.iso.sig
 
 
+
 #### verify signature
 
     pacman-key -v archlinux-x86_64.iso.sig
+
 
 
 #### make bootable usb
 
     dd bs=4M if=/home/m/Downloads/archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 
+#-----------------------------------------------------------------------------------------}}}
 
+
+
+#--- working on the host -----------------------------------------------------------------{{{
 #### boot the live environment
 
     on the asus k50:
@@ -44,21 +54,29 @@
     [iwd]# station wlan0 scan
     [iwd]# station wlan0 get-networks
     [iwd]# station wlan0 connect NETGEAR87
-    passphrase: roundsquXXNNN
+    passphrase: roundsquash478
     exit=ctrl+d
+    ip a
     ping -c4 archlinux.org
+    passwd root
 
 
 <pre>
-Switch console to view this guide with lynx.
+Switch console (tty1-6), to view this guide with lynx.
 Use the Alt+arrow shortcut. To edit configuration files, vim are available.
 </pre>
 
+#----------------------------------------------------------------------------------------}}}
 
-passwd root
-ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@192.168.0.31
-set -o vi
-alias l='ls -la --color --group-directories-first'
+
+
+#--- working via a ssh client ------------------------------------------------------------{{{
+#### ssh
+
+    ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@192.168.0.31
+    ssh root@192.168.0.31
+    set -o vi
+    alias l='ls -la --color --group-directories-first'
 
 
 #### update the system clock
@@ -87,15 +105,6 @@ Provide an image here to see the layout of the ssd on asus.k50
 ---
 
 
-#### lsblk
-
-    sda1    win10 ntfs
-    sda2    extended part
-    sda3    data fat32
-    sda5    linux swap
-    sda6    arch1
-    sda7    arch2
-    sda8    lfs
 
 
 #### fortmat the partitions
@@ -110,6 +119,16 @@ Provide an image here to see the layout of the ssd on asus.k50
     swapon /dev/sda5
 
     lsblk
+
+<pre>
+sda1    win10 ntfs
+sda2    extended part
+sda3    data fat32
+sda5    linux swap
+sda6    arch1
+sda7    arch2
+sda8    lfs
+</pre>
 
 
 #### install essential packages
@@ -149,4 +168,9 @@ Provide an image here to see the layout of the ssd on asus.k50
     vim /etc/hostname           add: arch.k50
 
     install network managment software:
-    
+   
+
+------------------------------------------------------------------------------------------}}} 
+
+
+
