@@ -27,7 +27,7 @@
 
 #### make bootable usb
 
-    dd bs=4M if=/home/m/Downloads/archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
+    sudo dd bs=4M if=/home/m/Downloads/archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 
 #-----------------------------------------------------------------------------------------}}}
 
@@ -141,6 +141,7 @@ sda8    lfs
 
 #### fstab
 
+    cat /mnt/etc/fstab
     genfstab -U /mnt >> /mnt/etc/fstab
     cat /mnt/etc/fstab
 
