@@ -1,4 +1,6 @@
-## arch.asus.k50
+## arch.k50
+
+### archlinux on Asus K50IJ
 
 
 
