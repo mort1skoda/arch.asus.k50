@@ -14,7 +14,7 @@
 
 #### wget
 
-    wget https://mirror.archlinux.no/iso/2023.02.01/archlinux-x86_64.iso\
+    wget https://mirror.archlinux.no/iso/2023.02.01/archlinux-x86_64.iso
     wget https://mirror.archlinux.no/iso/2023.02.02/archlinux-x86_64.iso.sig
 
 
