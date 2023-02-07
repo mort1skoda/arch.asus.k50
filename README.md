@@ -110,7 +110,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     lsblk
     mkfs.ext4 /dev/sda6
-    mkswap /dev/sda5 
+    mkswap /dev/sda5
 
 
 #### mount the file systems
