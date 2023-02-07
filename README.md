@@ -49,16 +49,18 @@
 
 #### connect to the internet
 
-    iwctl
+    passwd root
+
+     iwctl
     [iwd]# device list
     [iwd]# station wlan0 scan
     [iwd]# station wlan0 get-networks
-    [iwd]# station wlan0 connect NETGEAR87
-    passphrase: roundsquash478
-    exit=ctrl+d
+      [iwd]# station wlan0 connect NETGEAR87
+      passphrase: roundsquash478
+     exit=ctrl+d
+
     ip a
     ping -c4 archlinux.org
-    passwd root
 
 
 <pre>
@@ -76,6 +78,7 @@ Use the Alt+arrow shortcut. To edit configuration files, vim are available.
 
     ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@192.168.0.31
     ssh root@192.168.0.31
+        (rm .ssh)
     set -o vi
     alias l='ls -la --color --group-directories-first'
 
@@ -164,6 +167,7 @@ sda8    lfs
     vim /etc/locale.gen         Uncomment en_US.UTF-8 UTF-8
     locale-gen
 
+    vim /etc/locale.conf        add: LANG=en_US.UTF-8
     vim /etc/vconsole.conf      add: KEYMAP=no 
 
 
@@ -172,7 +176,42 @@ sda8    lfs
     vim /etc/hostname           add: arch.k50
 
     install network managment software:
-   
+    pacman -S networkmanager
+    systemctl enable NetworkManager
+    pacman -S openssh
+    systemctl enable sshd
+
+
+#### root password
+
+    passwd root
+
+
+#### bootloader
+
+    pacman -S grub os-prober
+    grub-install --target=i386-pc /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+
+    Probe for other os:
+    vim /etc/default/grub
+        and uncomment:  GRUB_DISABLE_OS_PROBER=false
+
+    pacman -S ntfs-3g       ( if windows )
+    mount /dev/sda1 /mnt/sda1
+    grub-mkconfig --target=i386-pc /boot/grub/grub.cfg
+
+    ctrl+d
+    umount -R /mnt
+    reboot
+
+    nmcli device wifi list
+    nmcli device wifi connect '103B 2.4' password sdbyorgufjuad
+    ip a
+
+ 
+
+
 
 ------------------------------------------------------------------------------------------}}} 
 
