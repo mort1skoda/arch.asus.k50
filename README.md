@@ -139,7 +139,7 @@ sda8    lfs
 #### install essential packages
 
     lscpu to see if you need amd-ucode or intel ucode.    
-    pacstrap -K /mnt base linux linux-firmware amd-ucode vim
+    pacstrap -K /mnt base linux linux-firmware amd-ucode vim sudo openssh
 
 
 #### fstab
@@ -205,11 +205,41 @@ sda8    lfs
     umount -R /mnt
     reboot
 
+
+#### connect to wifi
+
     nmcli device wifi list
     nmcli device wifi connect '103B 2.4' password sdbyorgufjuad
     ip a
 
- 
+
+#### regular user
+
+    useradd -m -G wheel m
+    passwd m
+
+
+#### visudo
+
+    EDITOR=/usr/bin/vim visudo
+
+        add at top: Defaults editor=/usr/bin/vim
+
+    uncomment wheel  ( with or without passwd )
+
+#### git
+
+    sudo pacman -S git
+    sudo pacman -S github-cli
+
+    sudo mkdir /rep
+    sudo chown -R m:m /rep
+    
+    git clone https://github.com/mort1skoda/arch.k50.git
+
+    
+
+
 
 
 
