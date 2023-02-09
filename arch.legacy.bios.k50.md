@@ -38,13 +38,13 @@
 
 
 
-# -- initial settings -----------------------{{{
+#### -- initial settings -----------------------{{{
 
     loadkeys no
     set -o vi
     alias l='ls -la --color --group-directories-first'
     passwd
-# -- ------- -------- -----------------------}}}
+#### -- ------- -------- -----------------------}}}
 
 
 
@@ -62,23 +62,23 @@
 
 
 
-# -- work on the host -----------------------{{{
+#### -- work on the host -----------------------{{{
 
     Switch between tty1-6: Alt+arrow
     You can use lynx to read instructions.
     lynx archlinux.org
     o=option to set vi keys
-# -- ---- -- --- ---- -----------------------}}}
+#### -- ---- -- --- ---- -----------------------}}}
 
 
 
-# -- work via ssh client --------------------{{{
+#### -- work via ssh client --------------------{{{
 
     rm .ssh
     ssh root@10.0.0.56
     set -o vi
     alias l='ls -la --color --group-directories-first'
-# -- ---- --- --- ------ --------------------}}}
+#### -- ---- --- --- ------ --------------------}}}
 
 
 
