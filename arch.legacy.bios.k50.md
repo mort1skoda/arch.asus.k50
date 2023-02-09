@@ -160,18 +160,18 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 
 
-# -- localiztion ----------------------------{{{
+#### -- localiztion ----------------------------{{{
 
     vim /etc/locale.gen     [uncomment en_US.UTF-8 UTF-8]
     locale-gen
 
     vim /etc/locale.conf    [LANG=en_US.UTF-8]
     vim /etc/vconsole.conf  [KEYMAP=no]
-# -- ----------- ----------------------------}}}
+#### -- ----------- ----------------------------}}}
 
 
 
-# -- network confiuration -------------------{{{
+#### -- network confiuration -------------------{{{
 
     vim /etc/hostname       [arch.k50]
 
@@ -180,18 +180,18 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     pacman -S openssh
     systemctl enable sshd
-# -- ------- ------------ -------------------}}}
+#### -- ------- ------------ -------------------}}}
 
 
 
-# -- root password --------------------------{{{
+#### -- root password --------------------------{{{
 
     passwd
-# -- ---- -------- --------------------------}}}
+#### -- ---- -------- --------------------------}}}
 
 
 
-# -- bootloader ----------------------------{{{
+#### -- bootloader ----------------------------{{{
 
     pacman -S grub os-prober
 
@@ -205,21 +205,22 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     mount /dev/sda1 /mnt/sda1
     grub-mkconfig -o /boot/grub/grub.cfg
-# -- ---------- ----------------------------}}}
+#### -- ---------- ----------------------------}}}
 
 
 
-# -- reboot --------------------------------{{{
+#### -- reboot --------------------------------{{{
 
     ctrl-d
     umount -R /mnt
     reboot
-# -- ------ --------------------------------}}}
+#### -- ------ --------------------------------}}}
 
 
 
-# -- connect to wifi -----------------------}}}
+#### -- connect to wifi -----------------------}}}
 
-
+    nmcli device wifi list
+    
 
 
