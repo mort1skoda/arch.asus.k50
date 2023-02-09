@@ -9,8 +9,18 @@
 #### download an iso image file
 
    [download iso file](https://archlinux.org/download)
-    
 
+#### wget iso file
+
+    wget https://mirrors.dotsrc.org/archlinux/iso/2023.02.01/archlinux-x86_64.iso
+
+#### wget sig file
+
+    wget https://mirros.dotsrc.org/archlinux/iso/2023.02.01/archlinux-x86_64.iso.sig
+
+#### verify signature
+
+    pacman-key -v archlinux-x86_64.iso.sig
 
 
 
