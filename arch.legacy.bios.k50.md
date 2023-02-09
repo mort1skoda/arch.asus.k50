@@ -281,6 +281,9 @@ Provide an image here to see the layout of the ssd on asus.k50
     logout
     login as m
         [check that bash files are sourced]
+
+    l
+    rm .git 
 #### -- ---- --- ----- ---- -------- -- - -------}}}
 
 
