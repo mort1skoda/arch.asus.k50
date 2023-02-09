@@ -17,7 +17,9 @@
 
 
     arch.xorg.md
-        Install X
+pi xorg
+pi xorg-xinit
+
 
     arch.dwm.md
 
