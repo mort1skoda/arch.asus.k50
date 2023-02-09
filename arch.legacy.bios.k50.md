@@ -51,13 +51,11 @@
 # -- connect to internet --------------------{{{
 
     iwctl
-
-[iwd]# device list
-[iwd]# station wlan0 get-networks
-[iwd]# station wlan0 connect '103B 2.4'
-Passphrase: ********
-[iwd]# ctrl-d
-
+    [iwd]# device list
+    [iwd]# station wlan0 get-networks
+    [iwd]# station wlan0 connect '103B 2.4'
+    Passphrase: ********
+    [iwd]# ctrl-d
     ip a
     ping -c4 archlinux.org
 # -- ------- -- -------- --------------------}}}
