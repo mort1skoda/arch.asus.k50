@@ -198,9 +198,9 @@ sda8    lfs
 
     pacman -S ntfs-3g       ( if windows )
     mount /dev/sda1 /mnt/sda1
-    grub-mkconfig --target=i386-pc /boot/grub/grub.cfg
+    grub-mkconfig -o /boot/grub/grub.cfg
 
-    ctrl+d
+    ctrl-d
     umount -R /mnt
     reboot
 
