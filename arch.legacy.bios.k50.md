@@ -96,7 +96,7 @@ At this point I went into Windows 10 and run MiniTool Partition Wizard
 To make a swap partition and 3 linux installation partitons.
 </pre>
 
-#### -- fortmat -----------------------------{{{
+#### -- format ------------------------------{{{
 
     lsblk
     mkfs.ext4 /dev/sda6
