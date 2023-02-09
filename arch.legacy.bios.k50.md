@@ -30,11 +30,11 @@
 
 
 
-# boot the live environment ------------------{{{
+#### boot the live environment ------------------{{{
     on asus k50 spam ESC to select boot device
 
 ---> provide image of archlinux live boot screen <---
-# --------------------------------------------}}}
+#### --------------------------------------------}}}
 
 
 
