@@ -41,7 +41,7 @@
 
 
 #### loadkeys
-    
+
     loadkeys no
     set -o vi
     alias l='ls -la --color --group-directories-first'
@@ -51,13 +51,14 @@
 
     passwd root
 
-     iwctl
+    iwctl
+
     [iwd]# device list
     [iwd]# station wlan0 scan
     [iwd]# station wlan0 get-networks
       [iwd]# station wlan0 connect NETGEAR87
       passphrase: roundsquash478
-     exit=ctrl+d
+    ctrl+d to quit
 
     ip a
     ping -c4 archlinux.org
@@ -76,9 +77,9 @@ Use the Alt+arrow shortcut. To edit configuration files, vim are available.
 
 #### ssh
 
-    ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@192.168.0.31
-    ssh root@192.168.0.31
-        (rm .ssh)
+    ssh -o StrictHostKeyChecking=no "UserKnownHostsFile /dev/null" root@10.0.0.56
+    ssh root@10.0.0.56
+      (rm .ssh) if not first try.
     set -o vi
     alias l='ls -la --color --group-directories-first'
 
@@ -88,7 +89,7 @@ Use the Alt+arrow shortcut. To edit configuration files, vim are available.
     timedatectl status
 
 
-#### partiton the disks ---------------------------------------------{{{
+#### partiton and format ---------------------------------------------{{{
 
     fdisk -l
     lsblk
@@ -101,6 +102,11 @@ At this point I went into Windows 10 and run MiniTool Partition Wizard
 To make a swap partition and 3 linux installation partitons.
 </pre>
 
+#### fortmat the partitions
+
+    lsblk
+    mkfs.ext4 /dev/sda6
+    mkswap /dev/sda5
 
 ---
 
@@ -108,14 +114,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 ---
 
-####-----------------------------------------------------------------}}}
-
-
-#### fortmat the partitions
-
-    lsblk
-    mkfs.ext4 /dev/sda6
-    mkswap /dev/sda5
+#### -----------------------------------------------------------------}}}
 
 
 #### mount the file systems
@@ -130,8 +129,8 @@ sda1    win10 ntfs
 sda2    extended part
 sda3    data fat32
 sda5    linux swap
-sda6    arch1
-sda7    arch2
+sda6    arch
+sda7    xubuntu
 sda8    lfs
 </pre>
 
