@@ -2,9 +2,14 @@
 #### legacy bios
 #### asus k50
 
+
+
 #### preparation ----------------------{{{
 
-#### download
+#### download an iso image file
+
+    [download iso](https://archlinux.org)
+    
 
 
 

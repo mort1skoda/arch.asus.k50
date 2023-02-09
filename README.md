@@ -6,7 +6,7 @@
 
 #--- preparation -------------------------------------------------------------------------{{{
 
-#### download
+#### download an iso image
 
     https://mirror.archlinux.no/iso/2023.02.01/
 
