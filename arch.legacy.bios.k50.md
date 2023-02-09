@@ -8,7 +8,7 @@
 
 #### download an iso image file
 
-   [download iso](https://archlinux.org)
+   [download iso file](https://archlinux.org/download)
     
 
 
