@@ -288,6 +288,7 @@ Provide an image here to see the layout of the ssd on asus.k50
     ln -svf /rep/dotfiles/.vim           ~
     ln -svf /rep/dotfiles/.bash_aliases  ~
     ln -svf /rep/dotfiles/.bash_logout   ~
+    ln -svf /rep/dotfiles/.bash_profile  ~
     ln -svf /rep/dotfiles/.bashrc        ~
     ln -svf /rep/dotfiles/.lynxrc        ~
     ln -svf /rep/dotfiles/.tmux.conf     ~
