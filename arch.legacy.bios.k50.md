@@ -288,6 +288,10 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 
 
+
+
+
+
 # You have done it!!!
 
 
