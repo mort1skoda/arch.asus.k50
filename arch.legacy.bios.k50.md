@@ -276,6 +276,8 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### create symlinks ---------------------------{{{
 
+   "Integrate your archlinux installation with dotfiles repo"
+   
    Create symlink in ~ that point to
    /rep/dotfiles.
 
