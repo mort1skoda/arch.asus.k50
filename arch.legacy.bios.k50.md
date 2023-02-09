@@ -53,5 +53,6 @@
     iwctl
 
 [iwd]# device list
+[iwd]# station wlan0 get-networks
 
 # -- ------- -- -------- --------------------}}}
