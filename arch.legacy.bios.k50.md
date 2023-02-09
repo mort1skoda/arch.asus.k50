@@ -218,9 +218,73 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 
 
-#### -- connect to wifi -----------------------}}}
+#### -- first time reboot settings ------------{{{
+
+    login as root
+    set -o vi
+    alias l='ls -la --color --group-directories-first'
+#### -- ----- ---- ------ -------- ------------}}}    
+
+
+
+#### -- connect to wifi -----------------------{{{
 
     nmcli device wifi list
-    
+    nmcli device wifi connect '103B 2.4' password sdbyorgufjuad
+    ip -color a
+    ping -c4 archlinux.org
+#### -- ------- -- ---- -----------------------}}}
+
+
+
+#### -- useradd ------------------------------{{{
+
+    useradd -m -G wheel m
+    passwd m
+#### -- --- ---- -----------------------------}}}
+
+
+
+#### -- visudo -------------------------------{{{
+
+    EDITOR=/usr/bin/vim visudo
+        [add at top: Defaults editor=/usr/bin/vim]
+        [uncomment %wheel]
+#### -- ------ -------------------------------}}}
+
+
+
+#### -- logout login ------------------------{{{
+
+    exit to logout
+    login as m
+#### -- ------ ----- ------------------------}}}
+
+
+
+#### -- git ---------------------------------{{{
+
+    sudo pacman -S git github-cli
+    sudo mkdir /rep
+    sudo chown -R m:m /rep
+
+    cd /rep
+    git clone https://github.com/mort1skoda/dotfiles.git
+#### -- --- ---------------------------------}}} 
+
+
+
+#### -- copy all files from dotfiles to ~ -------{{{
+
+    cp -a /rep/dotfiles/. /home/m/
+
+    logout
+    login as m
+        [check that bash files are sourced]
+#### -- ---- --- ----- ---- -------- -- - -------}}}
+
+
+
+# You have done it!!!
 
 
