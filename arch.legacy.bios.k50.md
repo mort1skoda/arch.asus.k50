@@ -4,7 +4,7 @@
 
 
 
-#### preparation ----------------------{{{
+#### preparation -----------------------------{{{
 
 #### download an iso image file
 
@@ -22,10 +22,11 @@
 
     pacman-key -v archlinux-x86_64.iso.sig
 
+#### make bootable usb
 
+    sudo dd bs=4M if=/home/m/Downloads/archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 
-
-#### ----------------------------------}}}
+#### -----------------------------------------}}}
 
 
 

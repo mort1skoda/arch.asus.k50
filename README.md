@@ -222,9 +222,9 @@ sda8    lfs
 
     EDITOR=/usr/bin/vim visudo
 
-        add at top: Defaults editor=/usr/bin/vim
+       add at top: Defaults editor=/usr/bin/vim
 
-    uncomment wheel  ( with or without passwd )
+    uncomment %wheel  ( with or without passwd )
 
 #### git
 
@@ -235,10 +235,6 @@ sda8    lfs
     sudo chown -R m:m /rep
     
     git clone https://github.com/mort1skoda/arch.k50.git
-
-    
-
-
 
 
 
