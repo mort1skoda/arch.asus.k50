@@ -276,7 +276,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### -- copy all files from dotfiles to ~ -------{{{
 
-    cp -a /rep/dotfiles/. /home/m/
+    cp -av /rep/dotfiles/. /home/m/
 
     logout
     login as m
