@@ -17,8 +17,8 @@
 
 
     arch.xorg.md
-pi xorg
-pi xorg-xinit
+    pi xorg
+    pi xorg-xinit
 
 
     arch.dwm.md
