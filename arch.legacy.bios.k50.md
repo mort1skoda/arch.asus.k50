@@ -82,20 +82,21 @@
 
 
 
-# -- partiton and format --------------------{{{
+#### -- partiton ----------------------------{{{
 
     fdisk -l
     lsblk
     blkid
 
     fdisk /dev/<the_disk_to_be_partitioned>
+#### -- -------- ----------------------------}}}
 
 <pre>
 At this point I went into Windows 10 and run MiniTool Partition Wizard
 To make a swap partition and 3 linux installation partitons.
 </pre>
 
-#### fortmat the partitions
+#### -- fortmat -----------------------------{{{
 
     lsblk
     mkfs.ext4 /dev/sda6
@@ -107,21 +108,21 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 ---
 
-# -- -------- --- ------ --------------------}}}
+#### -- ------- -----------------------------}}}
 
 
 
-# -- mount the file system ------------------{{{
+#### -- mount the file system ----------------{{{
 
     lsblk
     mount /dev/sda6 /mnt
     swapon /dev/sda5
     lslbk
-# -- ----- --- ---- ------ ------------------}}}
+#### -- ----- --- ---- ------ ----------------}}}
 
 
 
-# -- pacstrap -------------------------------{{{
+#### -- pacstrap -------------------------------{{{
 
     lscpu | grep -i Vendor
     pacstrap -K /mnt intel-ucode
@@ -129,33 +130,33 @@ Provide an image here to see the layout of the ssd on asus.k50
     pacstrap -K /mnt linux linux-firware
     pacstrap -K /mnt vim sudo openssh 
     pacstrap -K /mnt networkmanager
-# -- -------- ------------------------------}}} 
+#### -- -------- ------------------------------}}} 
 
 
 
-# -- fstab --------------------------------{{{
+#### -- fstab --------------------------------{{{
 
     cat /mnt/etc/fstab
     genfstab -U /mnt >> /mnt/etc/fstab
     cat /mnt/etc/fstab
-# -- ----- --------------------------------}}}
+#### -- ----- --------------------------------}}}
 
 
 
-# -- chroot ---------------------------------{{{
+#### -- chroot ---------------------------------{{{
 
     arch-chroot /mnt
     set -o vi
     alias l='ls -la --color --group-directories-first'
-# -- ------ ---------------------------------}}}
+#### -- ------ ---------------------------------}}}
 
 
 
-# -- time zone ------------------------------{{{
+#### -- time zone ------------------------------{{{
 
     ln -svf /usr/share/zoneinfo/Europa/Oslo /etc/localtime
     hwclock --systohc
-# -- ---- ---- ------------------------------}}}
+#### -- ---- ---- ------------------------------}}}
 
 
 
