@@ -30,3 +30,20 @@
 
 
 
+# boot the live environment ------------------{{{
+    on asus k50 spam ESC to select boot device
+# --------------------------------------------}}}
+
+
+
+# a few initial settings ---------------------{{{
+
+    loadkeys no
+    set -o vi
+    alias l='ls -la --color --group-directories-first'
+    passwd
+# --------------------------------------------}}}
+
+
+
+
