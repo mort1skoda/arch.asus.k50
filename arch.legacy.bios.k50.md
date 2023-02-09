@@ -274,24 +274,31 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 
 
-#### -- copy all files from dotfiles to ~ -------{{{
+#### create symlinks ---------------------------{{{
 
-    cp -av /rep/dotfiles/. /home/m/
+   Create symlink in ~ that point to
+   /rep/dotfiles.
 
-    logout
-    login as m
-        [check that bash files are sourced]
+   In this way the git repo located in
+   /rep/dotfiles will refelect any
+   ajustments to config files in ~
 
-    l
-    rm .git 
-#### -- ---- --- ----- ---- -------- -- - -------}}}
+    ln -svf /rep/dotfiles/.config        ~
+    ln -svf /rep/dotfiles/.vifm          ~
+    ln -svf /rep/dotfiles/.vim           ~
+    ln -svf /rep/dotfiles/.bash_aliases  ~
+    ln -svf /rep/dotfiles/.bash_logout   ~
+    ln -svf /rep/dotfiles/.bashrc        ~
+    ln -svf /rep/dotfiles/.lynxrc        ~
+    ln -svf /rep/dotfiles/.tmux.conf     ~
+    ln -svf /rep/dotfiles/.vimrc         ~
+    ln -svf /rep/dotfiles/.xinitrc       ~
 
+There is a bash (sh) file in /rep/dotfiles/ named:
+create.symlinks.sh that creates theese symlinks.
 
+    /rep/dotfiles/create.symlinks.sh
+#### ------ -------- ---------------------------}}}
 
-
-
-
-
-# You have done it!!!
 
 
