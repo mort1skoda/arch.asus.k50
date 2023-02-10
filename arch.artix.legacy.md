@@ -17,4 +17,13 @@
 
     s dd bs=4M if=~/Downloads/artix-base-runit-20220713-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
 
+#### boot live medium
 
+    asus k50ij spam ESC
+
+#### loadkeys
+
+    ls -R /usr/share/kbd/keymaps
+    loadkeys no
+
+    
