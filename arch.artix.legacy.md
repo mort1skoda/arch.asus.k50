@@ -23,7 +23,7 @@
 
 #### dd
 
-    s dd bs=4M if=~/Downloads/artix-base-runit-20220713-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
+    s dd bs=4M if=artix-base-runit-20220713-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
 
 
 
