@@ -29,7 +29,7 @@
 
 #### boot live medium
 
-    asus k50ij spam ESC
+    asus k50ij: spam ESC
 
 
 
@@ -101,6 +101,7 @@ s dmesg | grep AR9285 -A11
     rfkill
     rfkill unblock wifi
     sudo dmesg | grep firmware
+    sudo dmesg | grep -i microcode
 
 
     vi /etc/wpa_supplicant/wpa_supplicant.conf
@@ -159,6 +160,8 @@ s dmesg | grep AR9285 -A11
 
 
 #### openssh vim
+
+    basestrap /mnt openssh vim
 
 
 
