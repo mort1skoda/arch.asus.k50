@@ -1,12 +1,21 @@
-## arch.xorg
+## gui.md
 
-### archlinux install xorg
+### tested with:
+    
+    archlinux legacy bios boot systemd  asus.k50
+    archlinux uefi boot systemd         giga.am1
 
-#### follow archlinux wiki
+    artix legacy bios boot runit        asus.k50
 
 
 
-#### -- Install xorg
+#### -- following archlinux wiki
+
+    [wiki](https://wiki.archlinux.org/title/General_recommendations)
+
+
+
+#### -- install xorg
 
     lspci | g vga
     pacman -Ss xf86-video
@@ -16,6 +25,12 @@
     pi xterm
 
 
+
+#### -- install suckless
+
+    dwm
+    st
+    dmenu
     download:
     pi wget
     wget dl.suckless.org/dwm/dwm-6.4.tar.gz
@@ -23,22 +38,6 @@
     cd dwm-6.4
     pi make gcc
     sudo make clean install
-
-
-
-
-
-
-
-
-    st
-    dmenu
-
-    sudo make clean install
-    dwm
-    st
-    dmenu
-
 
 
 
