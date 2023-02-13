@@ -22,6 +22,29 @@
 </pre>
 
 
+<pre>
+    b2sum -c b2sums.txt | grep --color OK
+</pre>
+
+<pre>
+    sha256sum -c sha256sums.txt | grep --color OK
+</pre>
+
+<pre>
+    sudo pacman -S squoia-sq
+    sq wkd get pierre@archlinux.org > release-key.pgp
+    sq verify --signer-cert release-key.pgp --detached archlinux-x86_64.iso.sig archlinux-x86_64.iso
+</pre>
+
+<pre>
+    gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org
+</pre>
+
+<pre>
+    gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+</pre>
+
+
 
 #### download an iso image file
 
@@ -35,8 +58,30 @@
 
     wget https://mirros.dotsrc.org/archlinux/iso/2023.02.01/archlinux-x86_64.iso.sig
 
+#### wget b2sums.txt
+
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/b2sums.txt
+
+#### wget sha256sums.txt
+
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/sha256sums.txt
+
+<pre>
+Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloaded.
+</pre>
+
 #### verify signature
 
+    b2sum -c b2sums.txt | grep --color OK
+    sha256sum -c sha256sums.txt | grep --color OK
+    sudo pacman -S squoia-sq
+    sq wkd get pierre@archlinux.org > release-key.pgp
+    sq verify --signer-cert release-key.pgp --detached archlinux-x86_64.iso.sig archlinux-x86_64.iso
+    gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org
+    gpg --keyserver-options auto-key-retrieve --verify archlinux-x86_64.iso.sig
+
+
+    will only work on an existing arch linux installation: 
     pacman-key -v archlinux-x86_64.iso.sig
 
 #### make bootable usb
