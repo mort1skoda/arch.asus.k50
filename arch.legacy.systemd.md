@@ -17,6 +17,9 @@
 <pre>
     wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/b2sums.txt
 </pre>
+<pre>
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/sha256sums.txt
+</pre>
 
 
 
