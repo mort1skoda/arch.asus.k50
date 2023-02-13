@@ -1,10 +1,24 @@
 #### archlinux tutorial
-#### legacy bios
+#### legacy bios systemd
 #### asus k50
 
 
 
 #--- preparation -----------------------------{{{
+
+
+
+<pre>
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/archlinux-x86_64.iso
+</pre>
+<pre>
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/archlinux-x86_64.iso.sig 
+</pre>
+<pre>
+    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/b2sums.txt
+</pre>
+
+
 
 #### download an iso image file
 
