@@ -19,26 +19,46 @@
 
     lspci | g vga
     pacman -Ss xf86-video
+
     pi xf86-video-intel
     pi xorg
     pi xorg-xinit
-    pi xterm
+    (((pi xterm)))
 
 
 
 #### -- install suckless
 
-    dwm
-    st
-    dmenu
-    download:
     pi wget
+
     wget dl.suckless.org/dwm/dwm-6.4.tar.gz
     tar -xvf dwm-6.4.tar.gz
     cd dwm-6.4
-    pi make gcc
     sudo make clean install
 
+    wget dl.suckless.org/st/st-0.9.tar.gz
+    tar -xvf st-0.9.tar.gz
+    cd st-0.9
+    s make clean install
+
+    wget dl.suckless.org/dmenu/dmenu-2.4.tar.gz
+    tar -xvf dmenu-2.4.tar.gz
+    cd dmenu-2.4
+    s make clean install
 
 
+
+#### -- install yay
+
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    sudo pacman yay
+
+
+
+#### -- librewolf
+
+    yay librewolf
 

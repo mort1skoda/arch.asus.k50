@@ -4,9 +4,7 @@
 
 
 
-#--- preparation -----------------------------{{{
-
-
+#--- pdat.mntaration -----------------------------{{{
 
 <pre>
     wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/archlinux-x86_64.iso
@@ -21,13 +19,12 @@
     wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/sha256sums.txt
 </pre>
 
-
 <pre>
-    b2sum -c b2sums.txt | grep --color OK
+    b2sum -c b2sums.txt | gdat.mnt --color OK
 </pre>
 
 <pre>
-    sha256sum -c sha256sums.txt | grep --color OK
+    sha256sum -c sha256sums.txt | gdat.mnt --color OK
 </pre>
 
 <pre>
@@ -43,7 +40,6 @@
 <pre>
     gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
 </pre>
-
 
 
 #### download an iso image file
@@ -72,8 +68,8 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
 
 #### verify signature
 
-    b2sum -c b2sums.txt | grep --color OK
-    sha256sum -c sha256sums.txt | grep --color OK
+    b2sum -c b2sums.txt | gdat.mnt --color OK
+    sha256sum -c sha256sums.txt | gdat.mnt --color OK
     sudo pacman -S squoia-sq
     sq wkd get pierre@archlinux.org > release-key.pgp
     sq verify --signer-cert release-key.pgp --detached archlinux-x86_64.iso.sig archlinux-x86_64.iso
@@ -86,7 +82,7 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
 
 #### make bootable usb
 
-    sudo dd bs=4M if=archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
+    sudo dd bs=1M if=archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 
 #---------------------------------------------}}}
 
@@ -107,12 +103,25 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
     set -o vi
     alias l='ls -la --color --group-directories-first'
     passwd
+
+    cd ~
+    mkdir sda7
+    mount /dev/sda7 sda7
+    cd sda7/dat.mnt/dotfiles
+    cp -r .* ~
+    cd ~
+    tm          #start tmux 
 #### -- ------- -------- -----------------------}}}
 
 
 
 #### -- connect to internet --------------------{{{
 
+    in tmux:
+    one pane for: 
+    wip             = watch ip
+
+    Option1 ---> using iwctl: 
     iwctl
     [iwd]# device list
     [iwd]# station wlan0 get-networks
@@ -121,6 +130,16 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
     [iwd]# ctrl-d
     ip a
     ping -c4 archlinux.org
+
+    Option2 ---> using wpa_supplicant:
+    wpa_passphrase "103B 2.4" "sdbyorgufjuad" >> /etc/wpa_supplicant/wlan0.conf
+    wpa_supplicant -B -iwlan0 -c/etc/wpa_supplicant/wlan0.conf
+    ip a
+    ping -c4 archlinux.org
+
+    Option3 ???? can we use networkmanager here? 
+
+
 #### -- ------- -- -------- --------------------}}}
 
 
@@ -131,6 +150,7 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
     You can use lynx to read instructions.
     lynx archlinux.org
     o=option to set vi keys
+    Or use tmux and read this document. 
 #### -- ---- -- --- ---- -----------------------}}}
 
 
@@ -152,18 +172,20 @@ Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloa
     blkid
 
     fdisk /dev/<the_disk_to_be_partitioned>
-#### -- -------- ----------------------------}}}
 
 <pre>
 At this point I went into Windows 10 and run MiniTool Partition Wizard
 To make a swap partition and 3 linux installation partitons.
 </pre>
+#### -- -------- ----------------------------}}}
+
+
 
 #### -- format ------------------------------{{{
 
     lsblk
-    mkfs.ext4 /dev/sda6
     mkswap /dev/sda5
+    mkfs.ext4 /dev/sda8
 
 ---
 
@@ -178,8 +200,8 @@ Provide an image here to see the layout of the ssd on asus.k50
 #### -- mount the file system ----------------{{{
 
     lsblk
-    mount /dev/sda6 /mnt
     swapon /dev/sda5
+    mount /dev/sda8 /mnt
     lslbk
 #### -- ----- --- ---- ------ ----------------}}}
 
@@ -187,12 +209,16 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### -- pacstrap -------------------------------{{{
 
-    lscpu | grep -i Vendor
+    lscpu | gdat.mnt -i Vendor
     pacstrap -K /mnt intel-ucode
-    pacstrap -K /mnt base
+    pacstrap -K /mnt base base-devel
     pacstrap -K /mnt linux linux-firware
     pacstrap -K /mnt vim sudo openssh 
-    pacstrap -K /mnt networkmanager
+    pacstrap -K wpa_supplicant dhcpcd
+
+
+    #pacstrap -K /mnt networkmanager
+        
 #### -- -------- ------------------------------}}} 
 
 
@@ -215,6 +241,17 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 
 
+#### -- data directory -----------{{{
+" create a directory where I can mount common data,
+" ntfs to be shared with linux and windows.
+
+    cd /
+    mkdir dat.mnt
+    pacman -S ntfs-3g
+#### .. .... ........ ............}}}
+
+
+
 #### -- time zone ------------------------------{{{
 
     ln -svf /usr/share/zoneinfo/Europa/Oslo /etc/localtime
@@ -226,9 +263,10 @@ Provide an image here to see the layout of the ssd on asus.k50
 #### -- localiztion ----------------------------{{{
 
     vim /etc/locale.gen     [uncomment en_US.UTF-8 UTF-8]
+    cat /etc/locale.gen | gdat.mnt en_US
     locale-gen
 
-    vim /etc/locale.conf    [LANG=en_US.UTF-8]
+    vim /etc/locale.conf    [LANG=en_US.UTF-8]   (esc then shift zz to quit)
     vim /etc/vconsole.conf  [KEYMAP=no]
 #### -- ----------- ----------------------------}}}
 
@@ -240,6 +278,11 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     pacman -S networkmanager
     systemctl enable NetworkManager.service
+
+    or:
+    pacman -S wpa_supplicant dhcpcd
+    systemctl enable wpa_supplicant
+    systemctl enable dhcpcd
 
     pacman -S openssh
     systemctl enable sshd
@@ -260,9 +303,10 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     grub-install --target=i386-pc /dev/sda
 
+    vim /etc/default/grub   [uncomment: GRUB_DISABLE_OS_PROBER=false] 
+
     grub-mkconfig -o /boot/grub/grub.cfg
 
-    vim /etc/default/grub   [uncomment: GRUB_DISABLE_OS_PROBER=false] 
 
     pacman -S ntfs-3g       (if windows)
 
@@ -292,8 +336,19 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### -- connect to wifi -----------------------{{{
 
+   Using wpa_supplicant:
+    wpa_passphrase "103B 2.4" "sdbyorgufjuad"\
+        >> /etc/wpa_supplicant/wpa_supplicant-wlp2s0.conf
+    wpa_supplicant -B -iwlp2s0\
+        -c/etc/wpa_supplicant/wpa_supplicant-wlp2s0.conf
+
+    see my .bash_profile file
+
+   Or using networkmanager:
     nmcli device wifi list
     nmcli device wifi connect '103B 2.4' password sdbyorgufjuad
+
+
     ip -color a
     ping -c4 archlinux.org
 #### -- ------- -- ---- -----------------------}}}
@@ -302,7 +357,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
 #### -- useradd ------------------------------{{{
 
-    useradd -m -G wheel m
+    useradd -mG wheel m
     passwd m
 #### -- --- ---- -----------------------------}}}
 
@@ -312,7 +367,7 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     EDITOR=/usr/bin/vim visudo
         [add at top: Defaults editor=/usr/bin/vim]
-        [uncomment %wheel]
+        [uncomment %wheel
 #### -- ------ -------------------------------}}}
 
 
@@ -328,42 +383,27 @@ Provide an image here to see the layout of the ssd on asus.k50
 #### -- git ---------------------------------{{{
 
     sudo pacman -S git github-cli
-    sudo mkdir /rep
-    sudo chown -R m:m /rep
+    sudo mkdir dat.mnt/
+    sudo chown -R m:m /dat.mnt
 
-    cd /rep
-    git clone https://github.com/mort1skoda/dotfiles.git
+    cd /dat*/dot*
+
+    (((git clone https://github.com/mort1skoda/dotfiles.git)))
 #### -- --- ---------------------------------}}} 
 
 
 
 #### create symlinks ---------------------------{{{
 
-   "Integrate your archlinux installation with dotfiles repo"
+   "Integrate your archlinux installation with your dotfiles dat.mnto"
    
    Create symlink in ~ that point to
-   /rep/dotfiles.
+   /dat.mnt/dotfiles.
 
-   In this way the git repo located in
-   /rep/dotfiles will refelect any
-   ajustments to config files in ~
+There is a bash (sh) file in /dat.mnt/dotfiles/ named:
+dotf.symlinks.sh that creates theese symlinks.
 
-    ln -svf /rep/dotfiles/.config        ~
-    ln -svf /rep/dotfiles/.vifm          ~
-    ln -svf /rep/dotfiles/.vim           ~
-    ln -svf /rep/dotfiles/.bash_aliases  ~
-    ln -svf /rep/dotfiles/.bash_logout   ~
-    ln -svf /rep/dotfiles/.bash_profile  ~
-    ln -svf /rep/dotfiles/.bashrc        ~
-    ln -svf /rep/dotfiles/.lynxrc        ~
-    ln -svf /rep/dotfiles/.tmux.conf     ~
-    ln -svf /rep/dotfiles/.vimrc         ~
-    ln -svf /rep/dotfiles/.xinitrc       ~
-
-There is a bash (sh) file in /rep/dotfiles/ named:
-create.symlinks.sh that creates theese symlinks.
-
-    /rep/dotfiles/create.symlinks.sh
+    ./dat.mnt/dotfiles/dotf.symlinks.sh
 #### ------ -------- ---------------------------}}}
 
 
