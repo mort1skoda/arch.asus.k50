@@ -16,19 +16,14 @@
         This setup uses ethernet
 
 
-    arch.xorg.md
-    pi xorg
-    pi xorg-xinit
 
+#### other distros to try #################################{{{
 
-    arch.dwm.md
+    Void Linux
+    Gobo Linux
+    Venom Linux
 
-    arch.dmenu.md
-
-
-
-
-
+#### ......................................................}}}
 
 
 

@@ -41,9 +41,9 @@
     cd st-0.9
     s make clean install
 
-    wget dl.suckless.org/dmenu/dmenu-2.4.tar.gz
-    tar -xvf dmenu-2.4.tar.gz
-    cd dmenu-2.4
+    wget dl.suckless.org/tools/dmenu-5.2.tar.gz
+    tar -xvf dmenu-5.2.tar.gz
+    cd dmenu-5.2
     s make clean install
 
 

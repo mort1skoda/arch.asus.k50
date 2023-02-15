@@ -4,47 +4,11 @@
 
 
 
-#--- pdat.mntaration -----------------------------{{{
+#### prep ####################################################{{{
 
-<pre>
-    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/archlinux-x86_64.iso
-</pre>
-<pre>
-    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/archlinux-x86_64.iso.sig 
-</pre>
-<pre>
-    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/b2sums.txt
-</pre>
-<pre>
-    wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/sha256sums.txt
-</pre>
+#### download iso
 
-<pre>
-    b2sum -c b2sums.txt | gdat.mnt --color OK
-</pre>
-
-<pre>
-    sha256sum -c sha256sums.txt | gdat.mnt --color OK
-</pre>
-
-<pre>
-    sudo pacman -S squoia-sq
-    sq wkd get pierre@archlinux.org > release-key.pgp
-    sq verify --signer-cert release-key.pgp --detached archlinux-x86_64.iso.sig archlinux-x86_64.iso
-</pre>
-
-<pre>
-    gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org
-</pre>
-
-<pre>
-    gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
-</pre>
-
-
-#### download an iso image file
-
-   [download iso file](https://archlinux.org/download)
+   [download iso](https://archlinux.org/download)
 
 #### wget iso file
 
@@ -63,28 +27,28 @@
     wget https://mirror.rackspace.com/archlinux/iso/2023.02.01/sha256sums.txt
 
 <pre>
-Open b2sums.txt and sha256sums.txt, then remove all but the iso file you downloaded.
+Open b2sums.txt and sha256sums.txt,
+open the files and remove remove all lines,
+exept for the entry with the iso file you downloaded.
 </pre>
 
 #### verify signature
 
-    b2sum -c b2sums.txt | gdat.mnt --color OK
-    sha256sum -c sha256sums.txt | gdat.mnt --color OK
+    b2sum -c b2sums.txt | grep --color OK
+    sha256sum -c sha256sums.txt | grep --color OK
     sudo pacman -S squoia-sq
     sq wkd get pierre@archlinux.org > release-key.pgp
     sq verify --signer-cert release-key.pgp --detached archlinux-x86_64.iso.sig archlinux-x86_64.iso
     gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org
     gpg --keyserver-options auto-key-retrieve --verify archlinux-x86_64.iso.sig
 
-
-    will only work on an existing arch linux installation: 
+    The below instruction will only work on an existing arch linux installation: 
     pacman-key -v archlinux-x86_64.iso.sig
 
 #### make bootable usb
 
     sudo dd bs=1M if=archlinux-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
-
-#---------------------------------------------}}}
+#### ..........................................................}}}
 
 
 
@@ -268,6 +232,9 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     vim /etc/locale.conf    [LANG=en_US.UTF-8]   (esc then shift zz to quit)
     vim /etc/vconsole.conf  [KEYMAP=no]
+    
+    setfont drdos8x14
+
 #### -- ----------- ----------------------------}}}
 
 
@@ -281,7 +248,8 @@ Provide an image here to see the layout of the ssd on asus.k50
 
     or:
     pacman -S wpa_supplicant dhcpcd
-    systemctl enable wpa_supplicant
+    ####systemctl enable wpa_supplicant
+    vim /etc/dhcpcd.conf        [add noarp]
     systemctl enable dhcpcd
 
     pacman -S openssh
